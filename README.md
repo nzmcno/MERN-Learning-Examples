@@ -2,4 +2,11 @@
 
 
 ## I will clone some projects
-Test 
+
+### Mern Exercise Tracker 
+I started   Mar 12, 2021
+I finished  Mar 15, 2021
+
+### Memories Project 
+I started   -, 2021
+I finished  -, 2021
