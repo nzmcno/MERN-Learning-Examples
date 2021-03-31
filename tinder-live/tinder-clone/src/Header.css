@@ -1,0 +1,27 @@
+
+.header {
+    display: flex;
+    padding-left: 5%;
+    padding-right: 5%;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    border-bottom: 1px solid #f9f9f9;
+  }
+  
+  .header__logo {
+    object-fit: contain;
+    height: 40px;
+    width: 40px;
+  }
+  
+  @media only screen and (max-width: 1000px) {
+    .header__logo {
+      height: 37px;
+    }
+  
+    .header  {
+      height: 9vh;
+    }
+  
+  }
