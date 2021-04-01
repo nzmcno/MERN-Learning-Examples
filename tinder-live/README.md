@@ -1,7 +1,7 @@
 # TINDER CLONE 
 
 ## Tinder clone made with MongoDB, Express, Nodejs , React js, material ui, and backend hosted in heroku with frontend hosted in firebase.
-
+![Screenshot](screenshot.png)
 
 # How can you use this project
 
