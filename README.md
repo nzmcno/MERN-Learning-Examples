@@ -8,6 +8,12 @@ I finished  Mar 15, 2021
 
 ### Memories Project 
 I started   Mar 16, 2021
-I deleted this project because of version problems 2021
+I deleted this project because of version problems Mar 21, 2021
 
+### TINDER CLONE 
+I started   Mar 31, 2021
+I finished  Apr 1, 2021
 
+### TIKTOK CLONE 
+I started   Apr 1, 2021
+I finished  -
