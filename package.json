@@ -1,0 +1,18 @@
+{
+  "name": "modern-stack-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Modern Full-Stack Web Apps Monorepo (Next.js + TypeScript + Hono + PostgreSQL + Drizzle + Better Auth)",
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "start": "pnpm --filter web start",
+    "lint": "pnpm --filter web lint",
+    "test": "pnpm --filter web test",
+    "type-check": "pnpm --filter web type-check"
+  },
+  "packageManager": "pnpm@12.10.1",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
