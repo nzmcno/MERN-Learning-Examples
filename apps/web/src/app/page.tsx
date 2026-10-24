@@ -13,6 +13,9 @@ import {
   Layers,
   Database,
   Cpu,
+  Car,
+  Home as HomeIcon,
+  MessageSquare,
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -26,6 +29,9 @@ interface HealthResponse {
     tinder: string;
     tiktok: string;
     tracker: string;
+    uber?: string;
+    airbnb?: string;
+    twitter?: string;
   };
 }
 
@@ -41,40 +47,67 @@ export default function Home() {
   const apps = [
     {
       title: 'Tinder Clone',
-      description: 'Swipe cards, real-time match animations, instant messaging, and profile customization.',
+      description: 'Swipe cards deck, instant match celebration modal, live chat drawer, and custom profile creation.',
       href: '/tinder',
       icon: Flame,
       gradient: 'from-rose-500 to-amber-500',
-      badge: 'Interactive Swipe Engine',
-      stats: '4 Profiles • Match Modal • Live Chat',
+      badge: 'Swipe Engine',
+      stats: 'Cards Deck • Match Modal • Live Chat',
     },
     {
       title: 'TikTok Clone',
-      description: 'Vertical snap-scroll video feed, looping HTML5 playback, dynamic heart burst, comments drawer, and upload modal.',
+      description: 'Vertical snap-scroll feed, looping video player, dynamic heart bursts, comments drawer, and video uploader.',
       href: '/tiktok',
       icon: PlaySquare,
       gradient: 'from-cyan-500 to-blue-600',
-      badge: 'Vertical Feed & Player',
-      stats: 'Snap Scroll • Audio Ticker • Comments Drawer',
+      badge: 'Vertical Feed',
+      stats: 'Snap Scroll • Audio Ticker • Comments Sheet',
     },
     {
-      title: 'Exercise Tracker',
-      description: 'Complete evolution of the 2021 MERN tracker with KPI metrics, user management, category tags, search, and CRUD.',
+      title: 'Uber Ride Dispatch',
+      description: 'Real-time ride booking, dynamic fare matrix across tiers (UberX, Comfort, Black, Green), interactive route map, and driver telemetry.',
+      href: '/uber',
+      icon: Car,
+      gradient: 'from-emerald-500 to-teal-700',
+      badge: 'Dispatch System',
+      stats: 'Fare Calculator • Live Map • Driver Status',
+    },
+    {
+      title: 'Airbnb Escapes',
+      description: 'Category pills carousel (Beachfront, Cabins, Pools), property search, multi-photo cards, star ratings, and instant stay reservation.',
+      href: '/airbnb',
+      icon: HomeIcon,
+      gradient: 'from-pink-500 to-rose-600',
+      badge: 'Vacation Rentals',
+      stats: 'Category Carousel • Price Calculator • Booking',
+    },
+    {
+      title: '𝕏 / Twitter Timeline',
+      description: '3-column realtime timeline, tweet composer with media upload, trending hashtags (#NextJS16, #HonoEdge), and like/retweet counters.',
+      href: '/twitter',
+      icon: MessageSquare,
+      gradient: 'from-sky-400 to-indigo-600',
+      badge: 'Realtime Feed',
+      stats: 'Tweet Composer • Trends • Like & Retweet',
+    },
+    {
+      title: 'Exercise Tracker 2026',
+      description: 'Complete evolution of the 2021 MERN tracker into a high-performance analytics dashboard with KPI streaks, calorie estimation, and full CRUD.',
       href: '/tracker',
       icon: Dumbbell,
-      gradient: 'from-emerald-500 to-teal-600',
-      badge: 'Evolved from 2021 MERN',
+      gradient: 'from-amber-500 to-orange-600',
+      badge: 'Evolved 2021 MERN',
       stats: 'Calorie Counter • Streaks • Full CRUD',
     },
   ];
 
   const stackTechnologies = [
     { name: 'Next.js 16 (App Router)', role: 'Frontend, SSR & Routing', icon: Layers },
-    { name: 'TypeScript (Strict)', role: 'End-to-End Type Safety', icon: Cpu },
+    { name: 'TypeScript 5.9 (Strict)', role: 'End-to-End Type Safety', icon: Cpu },
     { name: 'Hono API', role: 'Ultra-fast REST API & RPC', icon: Zap },
     { name: 'PostgreSQL + Drizzle', role: 'Type-Safe SQL & Migrations', icon: Database },
     { name: 'Better Auth', role: 'Modern Authentication & Sessions', icon: ShieldCheck },
-    { name: 'Tailwind CSS + shadcn', role: 'Component Design System', icon: Sparkles },
+    { name: 'Tailwind CSS + shadcn', role: 'Design System & UI Components', icon: Sparkles },
   ];
 
   return (
@@ -92,7 +125,7 @@ export default function Home() {
             {healthStatus?.status === 'healthy' && (
               <span className="flex items-center gap-1.5 rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-300 border border-emerald-500/30">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                Hono API Online
+                Hono Microservices Online
               </span>
             )}
           </div>
@@ -102,46 +135,64 @@ export default function Home() {
           </h1>
 
           <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-            The legacy 2021 MERN projects (Exercise Tracker, Tinder Live, and TikTok Clone) have been completely re-engineered into modern, production-ready web apps inside a single high-performance pnpm monorepo.
+            Famous web application clones (<strong>Tinder, TikTok, Uber, Airbnb, 𝕏 / Twitter, and Exercise Tracker</strong>) built on a single unified TypeScript architecture inside a high-performance pnpm monorepo.
           </p>
 
-          <div className="flex flex-wrap gap-3 pt-2">
+          <div className="flex flex-wrap gap-2.5 pt-2">
             <Link href="/tinder">
-              <Button size="lg" className="gap-2 bg-rose-600 hover:bg-rose-700 text-white font-bold">
-                <Flame className="h-5 w-5" />
-                Launch Tinder
+              <Button size="sm" className="gap-1.5 bg-rose-600 hover:bg-rose-700 text-white font-bold">
+                <Flame className="h-4 w-4" />
+                <span>Tinder</span>
               </Button>
             </Link>
             <Link href="/tiktok">
-              <Button size="lg" className="gap-2 bg-cyan-600 hover:bg-cyan-700 text-white font-bold">
-                <PlaySquare className="h-5 w-5" />
-                Launch TikTok
+              <Button size="sm" className="gap-1.5 bg-cyan-600 hover:bg-cyan-700 text-white font-bold">
+                <PlaySquare className="h-4 w-4" />
+                <span>TikTok</span>
+              </Button>
+            </Link>
+            <Link href="/uber">
+              <Button size="sm" className="gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold">
+                <Car className="h-4 w-4" />
+                <span>Uber</span>
+              </Button>
+            </Link>
+            <Link href="/airbnb">
+              <Button size="sm" className="gap-1.5 bg-pink-600 hover:bg-pink-700 text-white font-bold">
+                <HomeIcon className="h-4 w-4" />
+                <span>Airbnb</span>
+              </Button>
+            </Link>
+            <Link href="/twitter">
+              <Button size="sm" className="gap-1.5 bg-sky-500 hover:bg-sky-600 text-white font-bold">
+                <MessageSquare className="h-4 w-4" />
+                <span>𝕏 / Twitter</span>
               </Button>
             </Link>
             <Link href="/tracker">
-              <Button size="lg" className="gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold">
-                <Dumbbell className="h-5 w-5" />
-                Launch Tracker
+              <Button size="sm" className="gap-1.5 bg-amber-600 hover:bg-amber-700 text-white font-bold">
+                <Dumbbell className="h-4 w-4" />
+                <span>Tracker</span>
               </Button>
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Modern Cloned Web Applications */}
+      {/* Modern Cloned Web Applications Grid */}
       <div>
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-2xl font-black tracking-tight text-zinc-900 dark:text-zinc-100">
-              Modern Web App Clones
+              Famous Web Application Clones (6 Apps)
             </h2>
             <p className="text-xs text-zinc-500">
-              Explore the 3 complete web applications built on this unified stack
+              Fully interactive web platforms powered by Hono REST endpoints and Drizzle ORM
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {apps.map((app) => {
             const Icon = app.icon;
             return (

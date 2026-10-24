@@ -4,6 +4,9 @@ import { cors } from 'hono/cors';
 import { tinderRoute } from './tinder';
 import { tiktokRoute } from './tiktok';
 import { trackerRoute } from './tracker';
+import { uberRoute } from './uber';
+import { airbnbRoute } from './airbnb';
+import { twitterRoute } from './twitter';
 
 export const app = new Hono()
   .basePath('/api')
@@ -18,11 +21,17 @@ export const app = new Hono()
         tinder: 'online',
         tiktok: 'online',
         tracker: 'online',
+        uber: 'online',
+        airbnb: 'online',
+        twitter: 'online',
       },
     });
   })
   .route('/tinder', tinderRoute)
   .route('/tiktok', tiktokRoute)
-  .route('/tracker', trackerRoute);
+  .route('/tracker', trackerRoute)
+  .route('/uber', uberRoute)
+  .route('/airbnb', airbnbRoute)
+  .route('/twitter', twitterRoute);
 
 export type AppType = typeof app;

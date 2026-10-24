@@ -1,3 +1,6 @@
+// -------------------------------------------------------------
+// Tinder App Types
+// -------------------------------------------------------------
 export interface TinderProfile {
   id: string;
   name: string;
@@ -22,6 +25,9 @@ export interface TinderMatch {
   lastMessage?: string;
 }
 
+// -------------------------------------------------------------
+// TikTok App Types
+// -------------------------------------------------------------
 export interface TikTokComment {
   id: string;
   videoId: string;
@@ -45,6 +51,9 @@ export interface TikTokVideo {
   createdAt: string;
 }
 
+// -------------------------------------------------------------
+// Exercise Tracker App Types
+// -------------------------------------------------------------
 export type ExerciseCategory = 'Running' | 'Gym' | 'Cycling' | 'Swimming' | 'Yoga' | 'Other';
 
 export interface ExerciseUser {
@@ -74,4 +83,104 @@ export interface TrackerStats {
   estimatedCalories: number;
   activeStreakDays: number;
   categoryBreakdown: Record<ExerciseCategory, number>;
+}
+
+// -------------------------------------------------------------
+// Uber App Types
+// -------------------------------------------------------------
+export type UberTier = 'UberX' | 'Comfort' | 'UberBlack' | 'UberGreen';
+
+export interface UberRideOption {
+  tier: UberTier;
+  title: string;
+  description: string;
+  capacity: number;
+  multiplier: number;
+  etaMins: number;
+  estimatedPrice: number;
+}
+
+export interface UberRide {
+  id: string;
+  pickup: string;
+  destination: string;
+  tier: UberTier;
+  fare: number;
+  status: 'searching' | 'driver_assigned' | 'in_transit' | 'completed' | 'cancelled';
+  driverName?: string;
+  driverCar?: string;
+  driverLicense?: string;
+  driverRating?: number;
+  driverAvatar?: string;
+  etaMins?: number;
+  createdAt: string;
+}
+
+// -------------------------------------------------------------
+// Airbnb App Types
+// -------------------------------------------------------------
+export type AirbnbCategory =
+  | 'Beachfront'
+  | 'Cabins'
+  | 'Iconic Cities'
+  | 'Mansions'
+  | 'Amazing Pools'
+  | 'Countryside'
+  | 'Lakefront';
+
+export interface AirbnbListing {
+  id: string;
+  title: string;
+  description: string;
+  category: AirbnbCategory;
+  location: string;
+  pricePerNight: number;
+  rating: number;
+  reviewsCount: number;
+  imageUrls: string[];
+  hostName: string;
+  hostAvatar: string;
+  isSuperhost: boolean;
+  isFavorite?: boolean;
+  maxGuests: number;
+  bedrooms: number;
+  bathrooms: number;
+  createdAt: string;
+}
+
+export interface AirbnbReservation {
+  id: string;
+  listingId: string;
+  listingTitle: string;
+  checkIn: string;
+  checkOut: string;
+  guests: number;
+  totalNights: number;
+  totalPrice: number;
+  createdAt: string;
+}
+
+// -------------------------------------------------------------
+// Twitter / X App Types
+// -------------------------------------------------------------
+export interface Tweet {
+  id: string;
+  authorName: string;
+  authorHandle: string;
+  authorAvatar: string;
+  isVerified: boolean;
+  content: string;
+  imageUrl?: string;
+  likesCount: number;
+  retweetsCount: number;
+  repliesCount: number;
+  isLiked?: boolean;
+  isRetweeted?: boolean;
+  createdAt: string;
+}
+
+export interface TrendTopic {
+  tag: string;
+  category: string;
+  tweetCount: string;
 }

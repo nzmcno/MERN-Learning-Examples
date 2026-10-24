@@ -74,7 +74,7 @@ export const tinderSwipes = pgTable('tinder_swipes', {
   profileId: text('profile_id')
     .notNull()
     .references(() => tinderProfiles.id, { onDelete: 'cascade' }),
-  direction: text('direction').notNull(), // 'like' | 'pass' | 'superlike'
+  direction: text('direction').notNull(),
   isMatch: boolean('is_match').default(false).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
@@ -108,7 +108,7 @@ export const tiktokComments = pgTable('tiktok_comments', {
 });
 
 // -------------------------------------------------------------
-// Exercise Tracker App Tables (Modernized from Legacy MERN)
+// Exercise Tracker App Tables
 // -------------------------------------------------------------
 export const trackerUsers = pgTable('tracker_users', {
   id: text('id').primaryKey(),
@@ -125,8 +125,80 @@ export const trackerExercises = pgTable('tracker_exercises', {
   username: text('username').notNull(),
   description: text('description').notNull(),
   category: text('category').default('Gym').notNull(),
-  duration: integer('duration').notNull(), // in minutes
+  duration: integer('duration').notNull(),
   date: timestamp('date').notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+// -------------------------------------------------------------
+// Uber App Tables
+// -------------------------------------------------------------
+export const uberRides = pgTable('uber_rides', {
+  id: text('id').primaryKey(),
+  pickup: text('pickup').notNull(),
+  destination: text('destination').notNull(),
+  tier: text('tier').notNull(), // 'UberX' | 'Comfort' | 'UberBlack' | 'UberGreen'
+  fare: integer('fare').notNull(), // in whole dollars
+  status: text('status').notNull(), // 'searching' | 'driver_assigned' | 'in_transit' | 'completed' | 'cancelled'
+  driverName: text('driver_name'),
+  driverCar: text('driver_car'),
+  driverLicense: text('driver_license'),
+  driverRating: integer('driver_rating'), // scaled (e.g. 490 = 4.90)
+  driverAvatar: text('driver_avatar'),
+  etaMins: integer('eta_mins'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+// -------------------------------------------------------------
+// Airbnb App Tables
+// -------------------------------------------------------------
+export const airbnbListings = pgTable('airbnb_listings', {
+  id: text('id').primaryKey(),
+  title: text('title').notNull(),
+  description: text('description').notNull(),
+  category: text('category').notNull(),
+  location: text('location').notNull(),
+  pricePerNight: integer('price_per_night').notNull(),
+  rating: integer('rating').notNull(), // scaled 492 = 4.92
+  reviewsCount: integer('reviews_count').notNull(),
+  imageUrls: jsonb('image_urls').$type<string[]>().default([]).notNull(),
+  hostName: text('host_name').notNull(),
+  hostAvatar: text('host_avatar').notNull(),
+  isSuperhost: boolean('is_superhost').default(true).notNull(),
+  maxGuests: integer('max_guests').notNull(),
+  bedrooms: integer('bedrooms').notNull(),
+  bathrooms: integer('bathrooms').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+export const airbnbReservations = pgTable('airbnb_reservations', {
+  id: text('id').primaryKey(),
+  listingId: text('listing_id')
+    .notNull()
+    .references(() => airbnbListings.id, { onDelete: 'cascade' }),
+  listingTitle: text('listing_title').notNull(),
+  checkIn: text('check_in').notNull(),
+  checkOut: text('check_out').notNull(),
+  guests: integer('guests').notNull(),
+  totalNights: integer('total_nights').notNull(),
+  totalPrice: integer('total_price').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+// -------------------------------------------------------------
+// Twitter / X App Tables
+// -------------------------------------------------------------
+export const twitterTweets = pgTable('twitter_tweets', {
+  id: text('id').primaryKey(),
+  authorName: text('author_name').notNull(),
+  authorHandle: text('author_handle').notNull(),
+  authorAvatar: text('author_avatar').notNull(),
+  isVerified: boolean('is_verified').default(false).notNull(),
+  content: text('content').notNull(),
+  imageUrl: text('image_url'),
+  likesCount: integer('likes_count').default(0).notNull(),
+  retweetsCount: integer('retweets_count').default(0).notNull(),
+  repliesCount: integer('replies_count').default(0).notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
 });

@@ -3,17 +3,29 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Flame, PlaySquare, Dumbbell, LayoutGrid, GitBranch } from 'lucide-react';
+import {
+  Flame,
+  PlaySquare,
+  Dumbbell,
+  LayoutGrid,
+  Car,
+  Home,
+  MessageSquare,
+  GitBranch,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function Navbar() {
   const pathname = usePathname();
 
   const navItems = [
-    { label: 'Overview Hub', href: '/', icon: LayoutGrid },
-    { label: 'Tinder Clone', href: '/tinder', icon: Flame, color: 'text-rose-500' },
-    { label: 'TikTok Clone', href: '/tiktok', icon: PlaySquare, color: 'text-cyan-400' },
-    { label: 'Exercise Tracker', href: '/tracker', icon: Dumbbell, color: 'text-emerald-500' },
+    { label: 'Hub', href: '/', icon: LayoutGrid, color: 'text-zinc-600 dark:text-zinc-400' },
+    { label: 'Tinder', href: '/tinder', icon: Flame, color: 'text-rose-500' },
+    { label: 'TikTok', href: '/tiktok', icon: PlaySquare, color: 'text-cyan-400' },
+    { label: 'Uber', href: '/uber', icon: Car, color: 'text-emerald-500' },
+    { label: 'Airbnb', href: '/airbnb', icon: Home, color: 'text-pink-500' },
+    { label: '𝕏 / Twitter', href: '/twitter', icon: MessageSquare, color: 'text-sky-500' },
+    { label: 'Tracker', href: '/tracker', icon: Dumbbell, color: 'text-amber-500' },
   ];
 
   return (
@@ -31,7 +43,7 @@ export function Navbar() {
         </Link>
 
         {/* Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 rounded-2xl bg-zinc-100/80 dark:bg-zinc-900/80 p-1 border border-zinc-200/50 dark:border-zinc-800/50">
+        <nav className="hidden lg:flex items-center gap-1 rounded-2xl bg-zinc-100/80 dark:bg-zinc-900/80 p-1 border border-zinc-200/50 dark:border-zinc-800/50">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
@@ -40,7 +52,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  'flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-all',
+                  'flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-semibold transition-all',
                   isActive
                     ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-sm'
                     : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50'
@@ -59,7 +71,7 @@ export function Navbar() {
             href="/(dashboard)/dashboard"
             className="hidden sm:inline-flex text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 px-2 py-1 rounded-lg"
           >
-            Metrics
+            Diagnostics
           </Link>
           <a
             href="https://github.com/nzmcno/MERN-Learning-Examples"
